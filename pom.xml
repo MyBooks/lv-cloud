@@ -11,6 +11,7 @@
         <module>eureka</module>
         <module>hanmeimei</module>
         <module>zuul</module>
+        <module>lilei</module>
     </modules>
     <packaging>pom</packaging>
 
