@@ -1,0 +1,16 @@
+server:
+  port: 60003
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:60004/eureka
+spring:
+  application:
+    name: ZuulServer
+management:
+  endpoints:
+    web:
+      exposure:
+        include: routes
