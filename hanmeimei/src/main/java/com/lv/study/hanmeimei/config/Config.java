@@ -6,10 +6,11 @@ import com.netflix.hystrix.strategy.eventnotifier.HystrixEventNotifier;
 import com.netflix.hystrix.strategy.executionhook.HystrixCommandExecutionHook;
 import com.netflix.hystrix.strategy.metrics.HystrixMetricsPublisher;
 import com.netflix.hystrix.strategy.properties.HystrixPropertiesStrategy;
+import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 
-
+@Configuration
 public class Config {
 
     @PostConstruct
