@@ -2,9 +2,11 @@ package com.lv.study.hanmeimei.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -15,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("talk")
 public class TalkController {
+    @Autowired
+    private RestTemplate restTemplate;
 
     @HystrixCommand(fallbackMethod = "error")
     @RequestMapping(method = RequestMethod.GET,path = "sayHello")
@@ -24,6 +28,13 @@ public class TalkController {
         String uuid = request.getHeader("UUID");
         System.out.println("uuid:" + uuid);
         return "hello uuid:"+uuid;
+    }
+
+    @HystrixCommand(fallbackMethod = "error")
+    @RequestMapping(method = RequestMethod.GET,path = "talkToLiLei")
+    public String talkToLiLei(){
+        String forObject = restTemplate.getForObject("http://LiLeiServer/talk/hiLiLei", String.class);
+        return forObject;
     }
 
     public String error(){

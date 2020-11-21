@@ -1,5 +1,6 @@
 package com.lv.study.lvcloud.zuul.filter;
 
+import com.lv.study.lvcloud.zuul.utils.UUIDUtil;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
@@ -52,7 +53,7 @@ public class UUIDFilter extends ZuulFilter {
     @Override
     public Object run() throws ZuulException {
         RequestContext currentContext = RequestContext.getCurrentContext(); // 在zuul中可以用requestContext快速拿到上下文
-        currentContext.addZuulRequestHeader("UUID", UUID.randomUUID().toString().replace("-","")); // 在请求中设置uuid
+        currentContext.addZuulRequestHeader("UUID", UUIDUtil.getUUID()); // 在请求中设置uuid
         return null;
     }
 }
