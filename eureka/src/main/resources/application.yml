@@ -13,3 +13,5 @@ eureka:
     register-with-eureka: false
     service-url:
       defaultZone: http://127.0.0.1:60004/eureka #不配会自我注册到8761一直报错
+logging:
+  config: classpath:logback.xml
