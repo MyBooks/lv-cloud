@@ -9,3 +9,5 @@ eureka:
       defaultZone: http://127.0.0.1:60004/eureka
   instance:
     prefer-ip-address: true
+logging:
+  config: classpath:logback.xml
